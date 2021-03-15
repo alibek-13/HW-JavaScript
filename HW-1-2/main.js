@@ -14,82 +14,23 @@
 let Box = 0;
 
 console.log("В ящике: " + Box + " яблок");
-
-let apple = 5;
-// let isPositive =  apple > 0 ? "Положительное"  : "Не положительное";
-
-console.log( apple === 0 ? "Ноль" : (apple  > 0 ? "Положительное" : "Отрицательное"));
-
-console.log( apple === 0 ? "Ноль" : (apple  > 0 ? "Положительное" : "Отрицательное"));
+console.log ("______________________")
+let apple = 10;
 
 
-
-let negativeNumber = apple * (apple > 0 ? -1 : 1);
-// number * (??)
-// -110 * 1 = -110
-// 110 * -1 = -110
-
-
-console.log(negativeNumber);
-
-// let var = условие ? выражение если условие верное : выражение если условие не верно
-
-// if (условие) { инструкции если условие верное}
-// else { инструкции  если условие не верно}
-
-// true false
-// 0 = false
-// остальные числа true
-// "" = false
-// остальные true
-
-// let apple = 5;
-//     apple = 10;
-//     apple = -15;
-
-// if (true) {
-//     apple = 5;
-//   console.log("В ящике: " + apple + " яблок");
-// }
-// if (true) {
-//   let a = "b";
-//   console.log(a);
-// }
-// console.log(apple);
-
-
-
-// let fruit = "груша"; // "апельсин", "груша"
-
-// switch (fruit) {
-//   case "яблоко":
-//     console.log("Яблоко зеленое");
-//     break;
-
-//   case "апельсин":
-//     console.log("Апельсин оранжевый");
-//     break;
-
-//   case "груша":
-//     console.log("Груша желтая");
-//     break;
-
-//   default: 
-//     console.log("Неизвестный фрукт");
-//     break;
-// }
+if (apple  > 0) { 
+    console.log ("«состояние» коробки: " + "«Полная»" + "\n В ящике: "+ apple + " яблок");
+}
+//условия если большее 0 яблок
+if (apple === 0 ) { 
+    console.log ("«состояние» коробки: " + "«Пустая»" + "\n В ящике: "+ apple + " яблок");
+} 
+//условия если равно  0 яблок
+if (apple < 0 ) {
+    console.log ("«состояние» коробки: " + "«Кредитная коробка»" + "\n В ящике: "+ apple + " яблок");
+}
+//условия если меньшее 0 яблок
 
 
 
 
-// let divisor = 10;
-// let divider = 40;
-
-// console.log(divider && divisor / divider);
-
-// let fullname = "Антон";
-// let age = "28";
-
-// console.log("Имя: " + fullname + (age && " Возраст: " + age));
-
-// // 
