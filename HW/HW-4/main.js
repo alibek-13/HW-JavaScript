@@ -16,7 +16,7 @@ const randomInt = (min, max) =>
 
 console.log(randomInt(-5, 10));
 
-randomInt = full;
+const randomInt = full;
 
 const Box = (b, fullBox, emptyBox, creditBox) => {
         
