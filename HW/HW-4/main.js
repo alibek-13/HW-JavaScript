@@ -1,59 +1,100 @@
-// Используя наработки предыдущих ДЗ:
-
-// Наша цель накопить N яблок
-
-// Каждый день (итерацию цикла) мы получаем или теряем случайное количество яблок 
-// в промежутке от (MIN, MAX) Например от -5 до 10;
-
-// На каждый день выводить лог как в предыдущем ДЗ:
-//   "Получили/потеряли R яблок"
-//   "В коробке S яблок"
-
-// В конце "Ура мы накопили N яблок"
-
 const randomInt = (min, max) => 
   min + Math.floor(Math.random() * (max - min));
 
-console.log(randomInt(-5, 10));
+const createRandomArray = (min, max, length) => {
+  let arr = [];
+  for (let i = 0; i < length; i++){
+    arr.push(randomInt(min, max));
+  }
+  return arr;
+}
 
-const randomInt = full;
-
-const Box = (b, fullBox, emptyBox, creditBox) => {
-        
-    if ( b === 0 ) {  
-      
-      return emptyBox;
-    
-    }
-    else if ( b < 0 ) {
-
-      return creditBox;
+const nNoun = (form1, form2, form3) => {
+    return (n) => {
+      let word;
+  
+      if (n % 10 === 1 && n % 100 !== 11) {
+        word = form1;
+      } else if (n % 10 === 2 && n % 100 !== 12) {
+        word = form2;
+      } else if (n % 10 === 3 && n % 100 !== 13) {
+        word = form2;
+      } else if (n % 10 === 4 && n % 100 !== 14) {
+        word = form2;
+      } else if (n % 10 === 5) {
+        word = form3;
+      } else if (n % 10 === 6) {
+        word = form3;
+      } else if (n % 10 === 7) {
+        word = form3;
+      } else if (n % 10 === 8) {
+        word = form3;
+      } else if (n % 10 === 9) {
+        word = form3;
+      } else if (n % 10 === 0) {
+        word = form3;
+      } else if (n % 100 === 11) {
+        word = form3;
+      } else if (n % 100 === 12) {
+        word = form3;
+      } else if (n % 100 === 13) {
+        word = form3;
+      } else if (n % 100 === 14) {
+        word = form3;
       }
-    else if (b > 0) {
-      return fullBox;
+  
+      return n + " " + word;
     }
   }
-  const  apple = (n, form1, form2, form3) => {
-              
-    n = n % 100;
-              
-    n1 = n % 10;
-              
-    if (n > 10 && n < 20) {
-              
-      return form3;
-                  }
-    else if (n1 > 1 && n1 < 5) {
 
-      return form2;
-                  }
-    else if (n1 === 1) {
+const nApples = nNoun("яблоко", "яблока", "яблок");
 
-      return form1;
-                  }
-      return form3;
+const logBoxState = box => {
+    console.log("В ящике " + nApples(box));
+  
+    if (box > 0) {
+      console.log("Полная коробка");
+    } else if (box === 0) {
+      console.log("Пустая коробка");
+    } else { // box < 0
+      console.log("Кредитная коробка");
+    }
   }
-  full = n; // Значение из базы данных
-  b = n;
-  console.log ("В ящике:"+ n + " " + apple(n, "Яблоко", "Яблока", "Яблок") +" "
-   + Box(b, "Полная коробка", "Пустая коробка", "Кредитная коробка",));
+
+
+const logTransaction = amount => {
+    console.log("-----------")
+    if (amount >= 0) {
+      console.log("Получили " + nApples(amount));
+    } else {
+      console.log("Потеряли " + nApples(Math.abs(amount)));
+    }
+  }
+
+const logResult = (box, goal) => {
+    console.log("----------");
+    if (box >= goal) {
+      console.log("Ура мы накопили " + nApples(box) + "!");
+    } else {
+      console.log("Не повезло, не фартануло. Мы накопили только " + nApples(box) + " =(");
+    }
+  }
+
+let amounts = createRandomArray(-10, 20, 30);
+  
+let goal = 100;
+  
+let box = 0;
+logBoxState(box);
+
+let transactions = [];
+while (box < goal && amounts.length > 0) {
+  let amount = amounts.shift();
+  box += amount;
+
+  transactions.push(amount);
+  logTransaction(amount);
+  logBoxState(box);
+}
+
+logResult(box, goal);
